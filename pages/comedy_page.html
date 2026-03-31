@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../style/style-comedy.css">
+    <link rel="shortcut icon" href="../images/favicon.png" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Catálogo de Comédia</title>
+  </head>
+  <body>
+    <header>
+      <div class="spider-banner">
+        <img src="../images/miranha.jpg" alt="Homem-Aranha" />
+      </div>
+      <div class="header-copy">
+        <a class="back" href="./index.html">Voltar</a>
+        <h1>Indicações de filmes de comédia diretamente do Aranha-Verso</h1>
+      </div>
+    </header>
+
+    <main class="wrap">
+      <section class="panel">
+        <div class="row">
+          <label>
+            Pesquisar (opcional)
+            <input id="query" placeholder="Ex.: Gente Grande, As Branquelas..." />
+          </label>
+
+          <label>
+            Idioma
+            <select id="lang">
+              <option value="pt-BR">pt-BR</option>
+              <option value="en-US">en-US</option>
+              <option value="es-ES">es-ES</option>
+            </select>
+          </label>
+
+          <button id="btnSearch" type="button">Buscar</button>
+        </div>
+
+        <div id="error" class="error"></div>
+      </section>
+
+      <div class="meta">
+        <div class="left" id="status">Carregando…</div>
+        <div class="pager">
+          <button id="btnPrev" type="button"></button>
+          <span id="pageInfo"></span>
+          <button id="btnNext" type="button"></button>
+        </div>
+      </div>
+
+      <section id="grid" class="grid" aria-live="polite"></section>
+    </main>
+
+    <script>
+      // Modo simples para testes: API key direto no front-end.
+      const TMDB_API_KEY = "fbd56111647f980daa96701763a985a2";
+      const TMDB_BASE_URL = "https://api.themoviedb.org/3";
+      const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w342";
+      const SELECTED_TITLES = [
+        "Se Beber, Não Case!",
+        "As Branquelas",
+        "Gente Grande",
+        "Superbad: É Hoje",
+        "Todo Mundo em Pânico",
+        "Debi & Lóide: Dois Idiotas em Apuros",
+        "Ace Ventura: Um Detetive Diferente",
+        "O Máskara",
+        "Escola de Rock",
+        "Click",
+        "Norbit",
+        "A Creche do Papai",
+        "Zoolander",
+        "Entrando Numa Fria",
+        "Quero Matar Meu Chefe",
+        "Legalmente Loira",
+        "Os Estagiários",
+        "As Férias da Minha Vida",
+        "O Virgem de 40 Anos",
+        "Uma Noite no Museu",
+        "Eu, Eu Mesmo & Irene",
+        "Todo Poderoso",
+        "O Mentiroso",
+        "Miss Simpatia",
+        "Se Eu Fosse Você",
+        "Minha Mãe é uma Peça",
+        "Tá Dando Onda",
+        "Os Caça-Fantasmas",
+        "Uma Ladra Sem Limites",
+        "Projeto X: Uma Festa Fora de Controle",
+        "Ted",
+        "Deadpool",
+        "A Ressaca",
+        "Vizinhos",
+        "Vizinhos 2",
+        "Central de Inteligência",
+        "Anjos da Lei",
+        "Anjos da Lei 2",
+        "Esposa de Mentirinha",
+        "Gente Grande 2",
+        "Eurotrip: Passaporte para a Confusão",
+        "American Pie: A Primeira Vez é Inesquecível",
+        "American Pie 2",
+        "American Pie: O Casamento",
+        "Os Batutinhas",
+        "De Pernas pro Ar",
+        "De Pernas pro Ar 2",
+        "De Pernas pro Ar 3",
+        "O Auto da Compadecida",
+      ];
+
+      const els = {
+        query: document.getElementById("query"),
+        lang: document.getElementById("lang"),
+        btnSearch: document.getElementById("btnSearch"),
+        btnPrev: document.getElementById("btnPrev"),
+        btnNext: document.getElementById("btnNext"),
+        pageInfo: document.getElementById("pageInfo"),
+        status: document.getElementById("status"),
+        grid: document.getElementById("grid"),
+        error: document.getElementById("error"),
+      };
+
+      let state = {
+        page: 1,
+        totalPages: 1,
+        lastMode: "selected", // "selected"
+        lastQuery: "",
+      };
+      const providerLinkCache = new Map();
+
+      function setError(message) {
+        if (!message) {
+          els.error.style.display = "none";
+          els.error.textContent = "";
+          return;
+        }
+        els.error.style.display = "block";
+        els.error.textContent = message;
+      }
+
+      function setLoading(isLoading) {
+        els.btnSearch.disabled = isLoading;
+        els.btnPrev.disabled = isLoading || state.page <= 1;
+        els.btnNext.disabled = isLoading || state.page >= state.totalPages;
+      }
+
+      function buildUrl(path, params) {
+        const url = new URL(`${TMDB_BASE_URL}${path}`);
+        url.searchParams.set("api_key", TMDB_API_KEY);
+        Object.entries(params).forEach(([k, v]) => {
+          if (v === undefined || v === null || v === "") return;
+          url.searchParams.set(k, String(v));
+        });
+        return url.toString();
+      }
+
+      async function tmdbGet(path, params) {
+        let res;
+        try {
+          res = await fetch(buildUrl(path, params), {
+            headers: { "Content-Type": "application/json;charset=utf-8" },
+          });
+        } catch (networkError) {
+          throw new Error(
+            "Falha de conexão com a TMDB. Verifique sua internet e tente novamente."
+          );
+        }
+
+        if (!res.ok) {
+          const text = await res.text().catch(() => "");
+          throw new Error(`TMDB respondeu ${res.status}. ${text || "Sem corpo de resposta."}`);
+        }
+
+        return await res.json();
+      }
+
+      function movieCard(movie) {
+        const title = movie.title || movie.name || "Sem título";
+        const year = movie.release_date ? movie.release_date.slice(0, 4) : "—";
+        const rating =
+          typeof movie.vote_average === "number" ? movie.vote_average.toFixed(1) : "—";
+
+        const poster = movie.poster_path
+          ? `<img alt="Pôster de ${escapeHtml(title)}" loading="lazy" src="${IMAGE_BASE_URL}${movie.poster_path}">`
+          : `<div class="poster">sem pôster</div>`;
+
+        const posterHtml = movie.poster_path ? `<div class="poster">${poster}</div>` : poster;
+
+        return `
+          <article class="card" data-movie-id="${movie.id}" data-movie-title="${escapeHtml(title)}" style="cursor:pointer">
+            ${posterHtml}
+            <div class="body">
+              <p class="title">${escapeHtml(title)}</p>
+              <p class="sub">
+                <span class="badge">Ano: ${escapeHtml(year)}</span>
+                <span class="badge">Nota: ${escapeHtml(rating)}</span>
+              </p>
+            </div>
+          </article>
+        `;
+      }
+
+      function escapeHtml(s) {
+        return String(s)
+          .replaceAll("&", "&amp;")
+          .replaceAll("<", "&lt;")
+          .replaceAll(">", "&gt;")
+          .replaceAll('"', "&quot;")
+          .replaceAll("'", "&#039;");
+      }
+
+      function renderMovies(list) {
+        els.grid.innerHTML = list.map(movieCard).join("");
+      }
+
+      function regionFromLanguage(language) {
+        if (!language || !String(language).includes("-")) return "BR";
+        return String(language).split("-")[1].toUpperCase();
+      }
+
+      async function getWatchLinkForMovie(movieId) {
+        if (providerLinkCache.has(movieId)) {
+          return providerLinkCache.get(movieId);
+        }
+
+        const providers = await tmdbGet(`/movie/${movieId}/watch/providers`, {});
+        const results = providers?.results || {};
+        const preferredRegion = regionFromLanguage(els.lang.value);
+        const selected = results[preferredRegion] || results.BR || results.US || null;
+        const link =
+          selected?.link || `https://www.themoviedb.org/movie/${movieId}/watch?locale=${preferredRegion}`;
+
+        providerLinkCache.set(movieId, link);
+        return link;
+      }
+
+      function normalize(text) {
+        return String(text || "")
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .toLowerCase()
+          .trim();
+      }
+
+      function chooseBestResult(results, expectedTitle) {
+        if (!Array.isArray(results) || results.length === 0) return null;
+        const expected = normalize(expectedTitle);
+        const exact = results.find((m) => normalize(m.title) === expected);
+        if (exact) return exact;
+        const originalExact = results.find((m) => normalize(m.original_title) === expected);
+        if (originalExact) return originalExact;
+        return results[0];
+      }
+
+      async function fetchMovieByTitle(title) {
+        const data = await tmdbGet("/search/movie", {
+          query: title,
+          include_adult: false,
+          language: els.lang.value,
+          page: 1,
+        });
+        return chooseBestResult(data.results, title);
+      }
+
+      async function loadSelected(query) {
+        setError("");
+        setLoading(true);
+        els.status.textContent = "Carregando…";
+        els.pageInfo.textContent = "";
+
+        try {
+          const trimmed = (query ?? "").trim();
+          state.lastQuery = trimmed;
+
+          const titlesToLoad = trimmed
+            ? SELECTED_TITLES.filter((t) => normalize(t).includes(normalize(trimmed)))
+            : SELECTED_TITLES;
+
+          const fetched = await Promise.all(
+            titlesToLoad.map(async (title) => {
+              try {
+                const movie = await fetchMovieByTitle(title);
+                return { title, movie };
+              } catch {
+                return { title, movie: null };
+              }
+            })
+          );
+
+          const foundMovies = fetched.filter((item) => item.movie).map((item) => item.movie);
+          const missingTitles = fetched.filter((item) => !item.movie).map((item) => item.title);
+
+          renderMovies(foundMovies);
+          els.status.textContent = `Catálogo selecionado • ${foundMovies.length} de ${titlesToLoad.length} filmes encontrados`;
+
+          if (missingTitles.length > 0) {
+            const preview = missingTitles.slice(0, 6).join(", ");
+            const suffix = missingTitles.length > 6 ? "..." : "";
+            setError(`Alguns títulos não foram encontrados na TMDB: ${preview}${suffix}`);
+          }
+        } catch (err) {
+          renderMovies([]);
+          els.status.textContent = "Não foi possível carregar.";
+          setError(err instanceof Error ? err.message : String(err));
+        } finally {
+          setLoading(false);
+          els.btnPrev.disabled = true;
+          els.btnNext.disabled = true;
+        }
+      }
+
+      els.btnSearch.addEventListener("click", () => {
+        loadSelected(els.query.value);
+      });
+
+      els.query.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") {
+          loadSelected(els.query.value);
+        }
+      });
+
+      els.lang.addEventListener("change", () => {
+        providerLinkCache.clear();
+        loadSelected(els.query.value);
+      });
+
+      els.grid.addEventListener("click", async (event) => {
+        const card = event.target.closest("[data-movie-id]");
+        if (!card) return;
+
+        const movieId = Number(card.dataset.movieId);
+        const movieTitle = card.dataset.movieTitle || "filme";
+        if (!movieId) return;
+
+        try {
+          setError("");
+          els.status.textContent = `Buscando onde assistir "${movieTitle}"...`;
+          const link = await getWatchLinkForMovie(movieId);
+          window.open(link, "_blank", "noopener,noreferrer");
+        } catch {
+          setError(`Não foi possível localizar provedores de streaming para "${movieTitle}".`);
+          els.status.textContent = "Não foi possível abrir provedores.";
+        }
+      });
+
+      els.btnPrev.addEventListener("click", () => {
+        // Paginação desativada no modo de lista selecionada.
+      });
+
+      els.btnNext.addEventListener("click", () => {
+        // Paginação desativada no modo de lista selecionada.
+      });
+
+      // Carrega apenas os filmes selecionados ao abrir a página.
+      loadSelected("");
+    </script>
+  </body>
+</html>
