@@ -1,4 +1,41 @@
+@import url("theme.css");
+@import url("header.css");
+@import url("brand-hero.css");
+
 * {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+}
+
+body {
+  min-height: 100dvh;
+  background-color: var(--color-bg-deep);
+  color: var(--color-text);
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+a {
+  color: var(--color-cta);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--color-cta-hover);
+}
+
+header,
+main,
+footer {
+  background-color: var(--color-bg-deep);
+}
+
+footer {
+  color: var(--color-meta);
+  border-top: 1px solid var(--color-border);
+  padding: 1rem;
 }

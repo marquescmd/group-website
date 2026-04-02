@@ -1,0 +1,17 @@
+@import url("theme.css");
+@import url("header.css");
+
+body {
+  min-height: 100dvh;
+  background-color: var(--color-bg-deep);
+  color: var(--color-text);
+  font-family: "Inter", system-ui, sans-serif;
+}
+
+a {
+  color: var(--color-cta);
+}
+
+a:hover {
+  color: var(--color-cta-hover);
+}

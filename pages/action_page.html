@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../style/style-comedy.css">
     <link rel="shortcut icon" href="../images/favicon.png" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Catálogo de Comédia</title>
+    <title>Catálogo de Ação</title>
   </head>
   <body>
     <header class="site-header">
@@ -25,7 +25,7 @@
     </header>
     <div class="page-header">
       <a class="back" href="./catalogo.html">Voltar</a>
-      <h1>Indicações de filmes de comédia</h1>
+      <h1>Filmes clássicos de ação</h1>
     </div>
 
     <main class="wrap">
@@ -33,7 +33,7 @@
         <div class="row">
           <label>
             Pesquisar (opcional)
-            <input id="query" placeholder="Ex.: Gente Grande, As Branquelas..." />
+            <input id="query" placeholder="Ex.: Matrix, Duro de Matar..." />
           </label>
 
           <button id="btnSearch" type="button">Buscar</button>
@@ -55,62 +55,42 @@
     </main>
 
     <script>
-      // Modo simples para testes: API key direto no front-end.
       const TMDB_API_KEY = "fbd56111647f980daa96701763a985a2";
       const TMDB_BASE_URL = "https://api.themoviedb.org/3";
       const TMDB_LANGUAGE = "pt-BR";
       const TMDB_REGION = "BR";
       const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w342";
       const SELECTED_TITLES = [
-        "Se Beber, Não Case!",
-        "As Branquelas",
-        "Gente Grande",
-        "Superbad: É Hoje",
-        "Todo Mundo em Pânico",
-        "Debi & Lóide: Dois Idiotas em Apuros",
-        "Ace Ventura: Um Detetive Diferente",
-        "O Máskara",
-        "Escola de Rock",
-        "Click",
-        "Norbit",
-        "A Creche do Papai",
-        "Zoolander",
-        "Entrando Numa Fria",
-        "Quero Matar Meu Chefe",
-        "Legalmente Loira",
-        "Os Estagiários",
-        "As Férias da Minha Vida",
-        "O Virgem de 40 Anos",
-        "Uma Noite no Museu",
-        "Eu, Eu Mesmo & Irene",
-        "Todo Poderoso",
-        "O Mentiroso",
-        "Miss Simpatia",
-        "Se Eu Fosse Você",
-        "Minha Mãe é uma Peça",
-        "Tá Dando Onda",
-        "Os Caça-Fantasmas",
-        "Uma Ladra Sem Limites",
-        "Projeto X: Uma Festa Fora de Controle",
-        "Ted",
-        "Deadpool",
-        "A Ressaca",
-        "Vizinhos",
-        "Vizinhos 2",
-        "Central de Inteligência",
-        "Anjos da Lei",
-        "Anjos da Lei 2",
-        "Esposa de Mentirinha",
-        "Gente Grande 2",
-        "Eurotrip: Passaporte para a Confusão",
-        "American Pie: A Primeira Vez é Inesquecível",
-        "American Pie 2",
-        "American Pie: O Casamento",
-        "Os Batutinhas",
-        "De Pernas pro Ar",
-        "De Pernas pro Ar 2",
-        "De Pernas pro Ar 3",
-        "O Auto da Compadecida",
+        "Duro de Matar",
+        "O Exterminador do Futuro 2: O Julgamento Final",
+        "O Exterminador do Futuro",
+        "Mad Max: Estrada da Fúria",
+        "John Wick: De Volta ao Jogo",
+        "Matrix",
+        "Os Mercenários",
+        "Indiana Jones e Os Caçadores da Arca Perdida",
+        "Predador",
+        "Rambo: Programado para Matar",
+        "Missão: Impossível",
+        "Velozes e Furiosos",
+        "Gladiador",
+        "Tropa de Elite",
+        "O Livro de Eli",
+        "Kingsman: Serviço Secreto",
+        "Duro de Matar 2",
+        "Duro de Matar 3",
+        "Onde os Fracos Não Têm Vez",
+        "Dupla Explosiva",
+        "O Protetor",
+        "Ponte de Espiões",
+        "300",
+        "Troia",
+        "Batman: O Cavaleiro das Trevas",
+        "Homem-Aranha",
+        "Homem de Ferro",
+        "Capitão América: Soldado Invernal",
+        "Caçadores de Emoção",
+        "O Patriota",
       ];
 
       const els = {
@@ -127,7 +107,7 @@
       let state = {
         page: 1,
         totalPages: 1,
-        lastMode: "selected", // "selected"
+        lastMode: "selected",
         lastQuery: "",
       };
       const providerLinkCache = new Map();
@@ -337,15 +317,9 @@
         }
       });
 
-      els.btnPrev.addEventListener("click", () => {
-        // Paginação desativada no modo de lista selecionada.
-      });
+      els.btnPrev.addEventListener("click", () => {});
+      els.btnNext.addEventListener("click", () => {});
 
-      els.btnNext.addEventListener("click", () => {
-        // Paginação desativada no modo de lista selecionada.
-      });
-
-      // Carrega apenas os filmes selecionados ao abrir a página.
       loadSelected("");
     </script>
   </body>

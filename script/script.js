@@ -1,16 +1,3 @@
-// Pegadinha do botão
-const button = document.getElementById('evasive-button');
-
-button.addEventListener('mouseenter', function() {
-  const randomX = Math.random() * (window.innerWidth - 200);
-  const randomY = Math.random() * (window.innerHeight - 100);
-
-  button.style.position = 'fixed';
-  button.style.left = randomX + 'px';
-  button.style.top = randomY + 'px';
-  button.style.zIndex = '1000';
-});
-
 // Transição ao clicar no perfil
 const profileLinks = document.querySelectorAll('.profile a');
 const transitionOverlay = document.getElementById('transition-overlay');

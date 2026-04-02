@@ -1,0 +1,11 @@
+/* Paleta global — use em todas as páginas */
+:root {
+  --color-bg-deep: #0d0d0d;
+  --color-cta: #f27405;
+  --color-cta-hover: #ff8c1a;
+  --color-text: #ffffff;
+  --color-card: #1a1a1a;
+  --color-meta: #a6a6a6;
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-divider: #1a1a1a;
+}

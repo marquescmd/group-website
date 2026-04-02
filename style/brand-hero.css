@@ -1,0 +1,63 @@
+/* Faixa de marca grande — index e catálogo (importar após theme.css) */
+
+.brand-hero {
+  text-align: center;
+  padding: 2.5rem 1.25rem 2rem;
+  background: linear-gradient(
+    180deg,
+    rgba(242, 116, 5, 0.12) 0%,
+    rgba(13, 13, 13, 0) 65%
+  );
+  border-bottom: 1px solid var(--color-border);
+}
+
+.brand-hero__link {
+  display: inline-block;
+  line-height: 0;
+  transition: transform 0.25s ease;
+}
+
+.brand-hero__link:hover {
+  transform: scale(1.04);
+}
+
+.brand-hero__link:focus-visible {
+  outline: 2px solid var(--color-cta);
+  outline-offset: 6px;
+  border-radius: 12px;
+}
+
+/* Logo hero: bem maior que no header */
+.brand-hero__link img {
+  height: auto;
+  max-height: min(200px, 32vh);
+  width: auto;
+  max-width: min(520px, 92vw);
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+  filter: drop-shadow(0 8px 28px rgba(0, 0, 0, 0.55));
+}
+
+.brand-hero__tagline {
+  margin: 1.35rem auto 0;
+  max-width: 28rem;
+  color: var(--color-meta);
+  font-size: 1.05rem;
+  line-height: 1.5;
+}
+
+@media (min-width: 768px) {
+  .brand-hero {
+    padding: 3rem 1.5rem 2.5rem;
+  }
+
+  .brand-hero__link img {
+    max-height: min(220px, 34vh);
+    max-width: min(560px, 85vw);
+  }
+
+  .brand-hero__tagline {
+    font-size: 1.125rem;
+  }
+}
