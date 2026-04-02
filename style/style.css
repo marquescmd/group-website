@@ -19,23 +19,204 @@ body {
   font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 }
 
-a {
-  color: var(--color-cta);
+/*Navbar*/
+.site-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 10px 5%;
+  z-index: 1000;
+  background: transparent;
+}
+
+.site-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo-link { 
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
   text-decoration: none;
+  color: #fff;
 }
 
-a:hover {
-  color: var(--color-cta-hover);
+.logo-link h1:hover {
+  text-decoration: none !important;
+  color:#fff
 }
 
-header,
-main,
-footer {
-  background-color: var(--color-bg-deep);
+.logo-link h1 {
+  font-size: 24px;
 }
 
-footer {
-  color: var(--color-meta);
-  border-top: 1px solid var(--color-border);
-  padding: 1rem;
+.logo-link h1 strong {
+  color: #ffa024;
+}
+
+
+/*
+.logo-img {
+  height: 40px;
+  width: auto;
+}
+  */
+
+.nav-links a {
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 1px;
+  transition: 0.3s;
+  margin-left: 20px;
+}
+
+.nav-links a:hover {
+  color: #ffa024;
+}
+
+
+
+/*Section*/
+.principal { 
+  background: url('../images/fundouva.png');
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 20px;
+  color: #fff;
+}
+
+.principal h2 {
+  font-size: 3rem;
+  font-weight: 700;
+  padding-top: 46vh;
+  margin-bottom: 1.5rem;
+  max-width: 900px;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  max-width: 700px;
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.price {
+  font-size: 1.3rem;
+  margin-bottom: 2rem;
+}
+
+.features {
+  margin-top: 2rem;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+.btn-primary {
+  background-color: #ffa024; 
+  color: #fff;
+  padding: 18px 60px;
+  border-radius: 5px;
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.3s;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.btn-primary:hover {
+  background-color: #e68a1e; 
+  transform: scale(1.05);
+}
+
+/*Rodapé*/
+.site-footer {
+  background-color: #050505; 
+  color: #b3b3b3;
+  padding: 60px 8% 20px;
+  border-top: 1px solid #222;
+  font-family: 'Inter', sans-serif;
+}
+
+.boxf {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.flogo h2 {
+  color: #fff;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.flogo h2 strong {
+  color: #ffa024;
+}
+
+.flogo p {
+  font-size: 14px;
+  max-width: 200px;
+}
+
+.flinks {
+  display: flex;
+  gap: 60px;
+  flex-wrap: wrap;
+}
+
+.rmenu h3 {
+  color: #fff;
+  font-size: 16px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.rmenu a {
+  display: block;
+  color: #b3b3b3;
+  text-decoration: none;
+  font-size: 14px;
+  margin-bottom: 12px;
+  transition: 0.3s;
+}
+
+.rmenu a:hover {
+  color: #ffa024;
+}
+
+.fbtn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 20px;
+  border-top: 1px solid #1a1a1a;
+  font-size: 12px;
+}
+
+.icons a {
+  text-decoration: none;
+  color: #b3b3b3;
+}
+
+.icons span {
+  margin-left: 15px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.icons span:hover {
+  color: #fff;
 }
