@@ -1,7 +1,7 @@
 @import url("theme.css");
 @import url("header.css");
 
-body {
+/*body {
   min-height: 100dvh;
   background-color: var(--color-bg-deep);
   color: var(--color-text);
@@ -14,4 +14,353 @@ a {
 
 a:hover {
   color: var(--color-cta-hover);
+}
+*/
+*{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      background: #1a1a1f url("../images/fundouva.png") no-repeat center/cover;
+      color: #fff;
+      padding: 24px;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      background: linear-gradient(180deg, #050608 0%, #090b10 100%);
+      border: 2px solid rgba(255,255,255,0.06);
+      border-radius: 30px;
+      overflow: hidden;
+      box-shadow: 0 0 40px rgba(0,0,0,0.45);
+      margin-bottom: 40px !important;
+    }
+
+/*Navbar*/
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 26px 42px;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  background: rgba(0,0,0,0.25);
+  }
+
+.logo {
+  font-size: 2.6rem;
+  font-weight: 700;
+  letter-spacing: -1px;
+  }
+
+.logo span {
+  color: #f28c28;
+  }
+
+.menu {
+  display: flex;
+  gap: 50px;
+  list-style: none;
+  font-size: 1rem;
+  color: #d8d8d8;
+  }
+
+.menu .active {
+  color: #f28c28;
+  position: relative;
+  font-weight: 700;
+  }
+
+.menu .active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+  width: 100%;
+  height: 2px;
+  background: #f28c28;
+  border-radius: 999px;
+  }
+
+.cta-button {
+  border: 1px solid #f28c28;
+  color: #fff;
+  background: transparent;
+  padding: 12px 22px;
+  border-radius: 999px;
+  font-weight: 700;
+  cursor: pointer;
+  }
+
+/*Section*/
+.hero {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: 36px;
+  padding: 44px 42px 26px;
+  align-items: center;
+  }
+
+.section-label {
+  color: #f28c28;
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  }
+
+.hero h1 {
+  font-size: 4.2rem;
+  line-height: 1.05;
+  margin-bottom: 24px;
+  max-width: 700px;
+  }
+
+.hero h1 .highlight {
+  color: #f28c28;
+  }
+
+.hero p {
+  color: #cfcfcf;
+  font-size: 1.35rem;
+  line-height: 1.7;
+  max-width: 760px;
+  }
+
+.hero-image {
+  min-height: 430px;
+  border-radius: 24px;
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(to bottom, rgba(0,0,0,0.08), rgba(0,0,0,0.35)),
+    url('https://images.unsplash.com/photo-1524985069026-dd778a71c7b4?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
+  border: 1px solid rgba(255,255,255,0.06);
+  }
+
+.hero-image::after {
+  content: "UvaFliX";
+  position: absolute;
+  top: 28px;
+  right: 34px;
+  font-size: 3rem;
+  font-weight: 800;
+  color: rgba(255,255,255,0.92);
+  text-shadow: 0 0 18px rgba(255,255,255,0.18);
+  }
+
+    .cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1.3fr;
+      gap: 18px;
+      padding: 0 42px 10px;
+    }
+
+    .card {
+      background: linear-gradient(180deg, rgba(16,18,24,0.98), rgba(10,12,17,0.98));
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 18px;
+      padding: 26px;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.02);
+    }
+
+    .card h3 {
+      font-size: 1.9rem;
+      margin-bottom: 18px;
+    }
+
+    .card p,
+    .card li,
+    .team-subtitle,
+    .member-name {
+      color: #d0d0d0;
+      line-height: 1.7;
+      font-size: 1.1rem;
+    }
+
+    .mission-list {
+      list-style: none;
+      margin-top: 18px;
+    }
+
+    .mission-list li {
+      margin-bottom: 8px;
+    }
+
+    .team-subtitle {
+      margin-bottom: 22px;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 14px;
+      text-align: center;
+    }
+
+    .member img,
+    .avatar {
+      width: 88px;
+      height: 88px;
+      border-radius: 50%;
+      margin: 0 auto 12px;
+      object-fit: cover;
+      border: 2px solid #f28c28;
+      background: linear-gradient(135deg, #5c3b2d, #d49861);
+    }
+
+    .member-name {
+      font-size: 1rem;
+      line-height: 1.4;
+    }
+
+    .quote {
+      text-align: center;
+      font-size: 2.4rem;
+      font-style: italic;
+      padding: 34px 20px 40px;
+      color: #f3f3f3;
+    }
+
+    .quote span {
+      color: #f28c28;
+      font-weight: 700;
+    }
+
+    @media (max-width: 1200px) {
+      .hero,
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .team-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .hero h1 {
+        font-size: 3.2rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .navbar {
+        flex-direction: column;
+        gap: 18px;
+      }
+
+      .menu {
+        gap: 18px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .hero,
+      .cards {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      .hero h1 {
+        font-size: 2.4rem;
+      }
+
+      .hero p {
+        font-size: 1rem;
+      }
+
+      .team-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .quote {
+        font-size: 1.6rem;
+      }
+    }
+
+
+    
+/*Rodapé*/
+.site-footer {
+  background-color: #050505; 
+  color: #b3b3b3;
+  padding: 60px 8% 20px;
+  border-top: 1px solid #222;
+  font-family: 'Inter', sans-serif;
+  
+}
+
+.boxf {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 40px;
+  
+}
+
+.flogo h2 {
+  color: #fff;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.flogo h2 strong {
+  color: #ffa024;
+}
+
+.flogo p {
+  font-size: 14px;
+  max-width: 200px;
+}
+
+.flinks {
+  display: flex;
+  gap: 60px;
+  flex-wrap: wrap;
+}
+
+.rmenu h3 {
+  color: #fff;
+  font-size: 16px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.rmenu a {
+  display: block;
+  color: #b3b3b3;
+  text-decoration: none;
+  font-size: 14px;
+  margin-bottom: 12px;
+  transition: 0.3s;
+}
+
+.rmenu a:hover {
+  color: #ffa024;
+}
+
+.fbtn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 20px;
+  border-top: 1px solid #1a1a1a;
+  font-size: 12px;
+}
+
+.icons a {
+  text-decoration: none;
+  color: #b3b3b3;
+}
+
+.icons span {
+  margin-left: 15px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.icons span:hover {
+  color: #fff;
 }

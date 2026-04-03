@@ -1,30 +1,143 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UvaFlix</title>
-    <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=inter:400,600,700" rel="stylesheet" />
-    <link rel="stylesheet" href="../style/sobre.css">
-    <link rel="shortcut icon" href="../images/favicon.png" type="image/x-icon">
+  <link rel="stylesheet" href="../style/sobre.css">
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>UvaFlix | Sobre Nós</title>
+  <link rel="preconnect" href="https://fonts.bunny.net">
+  <link href="https://fonts.bunny.net/css?family=inter:400,600,700" rel="stylesheet" />
+  <link rel="shortcut icon" href="../images/favicon.png" type="image/x-icon">
 </head>
 <body>
-    <header class="site-header">
-      <nav class="site-nav" aria-label="Principal">
-        <a href="./catalogo.html" class="logo-link" aria-label="Ir para o catálogo">
-          <img src="../images/Logo-Img.png" alt="UvaFlix" class="logo-img" width="200" height="64" />
-        </a>
-        <div class="nav-links">
-          <a href="./index.html">Home</a>
-          <a href="./sobre.html">About</a>
-          <a href="./novidades.html">News</a>
-          <a href="./contato.html">Contact</a>
-        </div>
-      </nav>
+  <div class="container">
+    <header class="navbar">
+      <div class="logo"><span>Uva</span>Fli<span>x</span></div>
+
+      <ul class="menu">
+        <li><a href="./index.html">INICIO</a></li>
+        <li class="active"><a href="./sobre.html">SOBRE</a></li>
+        <li><a href="./novidades.html">NOVIDADES</a></li>
+        <li><a href="./contato.html">CONTATOS</a></li>
+      </ul>
+      <a href="../pages/contato.html">
+        <button class="cta-button">ASSINE AGORA</button>
+      </a>
     </header>
-    <main style="max-width: 800px; margin: 0 auto; padding: 2rem 1.5rem; color: var(--color-text);">
-      <h1 style="color: var(--color-text);">Sobre</h1>
-    </main>
+
+    <section class="hero">
+      <div class="hero-text">
+        <div class="section-label">SOBRE NÓS</div>
+        <h1>
+          CINEMA QUE CONECTA.<br />
+          TECNOLOGIA QUE <span class="highlight">INSPIRA.</span>
+        </h1>
+        <p>
+          A UVAFLIX nasceu da união entre tecnologia e paixão pelo cinema.
+          Somos cinco amigos estudantes de Ciência da Computação que decidiram
+          transformar uma ideia em realidade: criar uma plataforma simples,
+          acessível e feita para quem realmente ama filmes.
+        </p>
+      </div>
+      <div class="hero-image"></div>
+    </section>
+
+    <section class="cards">
+      <div class="card">
+        <h3>NOSSA HISTÓRIA</h3>
+        <p>
+          Tudo começou entre conversas, trabalhos da faculdade e aquela dúvida clássica:
+          “o que vamos assistir hoje?”. Percebemos que muitas plataformas deixavam de lado
+          grandes clássicos do cinema ou dificultavam o acesso a bons filmes.
+          <br /><br />
+          Foi então que decidimos criar a UVAFLIX — um espaço onde o passado e o presente
+          do cinema se encontram, reunindo desde obras icônicas até novidades que merecem
+          ser descobertas.
+        </p>
+      </div>
+      <div class="card">
+        <h3>NOSSA MISSÃO</h3>
+        <p>
+          Tornar o cinema mais acessível, reunindo histórias que marcaram gerações e novos
+          filmes que ainda vão marcar.
+        </p>
+        <ul class="mission-list">
+          <li>✔ Clássicos do cinema que nunca saem de moda</li>
+          <li>✔ Novidades selecionadas com cuidado</li>
+          <li>✔ Experiência simples, sem complicação</li>
+          <li>✔ Entretenimento de verdade, sem limites</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>NOSSA EQUIPE</h3>
+        <p class="team-subtitle">Cinco estudantes apaixonados por tecnologia e cinema:</p>
+        <div class="team-grid">
+          <div class="member">
+            <div class="avatar"></div>
+            <div class="member-name">Gyovanna<br />Said Giles</div>
+          </div>
+          <div class="member">
+            <div class="avatar"></div>
+            <div class="member-name">Nicole<br />Costa Seifert</div>
+          </div>
+          <div class="member">
+            <div class="avatar"></div>
+            <div class="member-name">Mateus<br />Custodio Jennings</div>
+          </div>
+          <div class="member">
+            <div class="avatar"></div>
+            <div class="member-name">Cauã<br />Marques</div>
+          </div>
+          <div class="member">
+            <div class="avatar"></div>
+            <div class="member-name">Anna Clara<br />Oliveira Gomes</div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+    <div class="quote">“Porque <span>boas histórias</span> merecem ser encontradas.”</div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="boxf">
+        <div class="flogo">
+            <h2><strong>Uva</strong>fli<strong>x</strong></h2>
+            <p>Sua dose diária de grandes histórias.</p>
+        </div>
+        
+        <div class="flinks">
+            <div class="rmenu">
+                <h3>Navegação</h3>
+                <a href="./index.html">Início</a>
+                <a href="./sobre.html">Sobre</a>
+                <a href="./novidades.html">Novidades</a>
+            </div>
+            <div class="rmenu">
+                <h3>Suporte</h3>
+                <a href="#">FAQ</a>
+                <a href="#">Central de Ajuda</a>
+                <a href="./contato.html">Contato</a>
+            </div>
+            <div class="rmenu">
+                <h3>Legal</h3>
+                <a href="#">Termos de Uso</a>
+                <a href="#">Privacidade</a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="fbtn">
+        <p>&copy; 2026 UvaFlix - Todos os direitos reservados.</p>
+        <div class="icons">
+            <a href="#" target="_blank" aria-label="Instagram">
+                <span>Instagram</span>
+            </a>
+            <a href="#" target="_blank" aria-label="Twitter">
+                <span>Twitter</span>
+            </a>
+        </div>
+    </div>
+</footer>
 </body>
 </html>
