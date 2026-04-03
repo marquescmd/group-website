@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UvaFlix</title>
+    <title>Novidades | UvaFlix</title>
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=inter:400,600,700" rel="stylesheet" />
     <link rel="stylesheet" href="../style/novidades.css">
@@ -13,18 +13,93 @@
     <header class="site-header">
       <nav class="site-nav" aria-label="Principal">
         <a href="./catalogo.html" class="logo-link" aria-label="Ir para o catálogo">
-          <img src="../images/Logo-Img.png" alt="UvaFlix" class="logo-img" width="200" height="64" />
+          <h1><strong>Uva</strong>fli<strong>x</strong></h1>
         </a>
         <div class="nav-links">
-          <a href="./index.html">Home</a>
-          <a href="./sobre.html">About</a>
-          <a href="./novidades.html">News</a>
-          <a href="./contato.html">Contact</a>
+          <a href="./index.html">Inicio</a>
+          <a href="./sobre.html">Sobre</a>
+          <a href="./novidades.html" aria-current="page">Novidades</a>
+          <a href="./contato.html">Contato</a>
         </div>
       </nav>
     </header>
-    <main style="max-width: 800px; margin: 0 auto; padding: 2rem 1.5rem; color: var(--color-text);">
-      <h1 style="color: var(--color-text);">Novidades</h1>
+
+    <main class="novidades-main">
+      <section class="news-hero" aria-labelledby="news-title">
+        <h1 id="news-title">Novidades</h1>
+        <p class="news-lead">Tudo o que chegou de novo na UvaFlix: estreias, melhorias e dicas para aproveitar ainda mais o seu streaming.</p>
+      </section>
+
+      <section class="news-grid" aria-label="Lista de novidades">
+        <article class="news-card">
+          <time class="news-card__date" datetime="2026-03-15">15 mar. 2026</time>
+          <h2 class="news-card__title">Estreias da semana</h2>
+          <p class="news-card__text">Novos filmes de ação, romance e comédia entram no catálogo toda segunda-feira. Abra o catálogo e escolha o perfil que combina com o seu momento.</p>
+          <a class="news-card__link" href="./catalogo.html">Ver catálogo</a>
+        </article>
+        <article class="news-card">
+          <time class="news-card__date" datetime="2026-03-01">1 mar. 2026</time>
+          <h2 class="news-card__title">Perfil Kids renovado</h2>
+          <p class="news-card__text">O ambiente infantil ficou mais simples de usar, com capas grandes e categorias pensadas para a família toda assistir com tranquilidade.</p>
+          <a class="news-card__link" href="./kids_page.html">Abrir perfil Kids</a>
+        </article>
+        <article class="news-card">
+          <time class="news-card__date" datetime="2026-02-20">20 fev. 2026</time>
+          <h2 class="news-card__title">Melhor experiência em telas grandes</h2>
+          <p class="news-card__text">Ajustamos contraste e tipografia para TV e monitor, para você curtir trailers e filmes com legenda mais confortável de ler à distância.</p>
+        </article>
+        <article class="news-card">
+          <time class="news-card__date" datetime="2026-02-01">1 fev. 2026</time>
+          <h2 class="news-card__title">Plano mensal</h2>
+          <p class="news-card__text">Continuamos com <strong>R$ 24,90 por mês</strong>: sem anúncios, cancele quando quiser e acesso ilimitado ao que já está disponível na plataforma.</p>
+          <a class="news-card__link" href="./index.html">Conhecer a UvaFlix</a>
+        </article>
+      </section>
+
+      <p class="news-cta-wrap">
+        <a href="./catalogo.html" class="btn-primary">Assine e explore o catálogo</a>
+      </p>
     </main>
+
+    <footer class="site-footer">
+    <div class="boxf">
+        <div class="flogo">
+            <h2><strong>Uva</strong>fli<strong>x</strong></h2>
+            <p>Sua dose diária de grandes histórias.</p>
+        </div>
+
+        <div class="flinks">
+            <div class="rmenu">
+                <h3>Navegação</h3>
+                <a href="./index.html">Início</a>
+                <a href="./sobre.html">Sobre</a>
+                <a href="./novidades.html">Novidades</a>
+            </div>
+            <div class="rmenu">
+                <h3>Suporte</h3>
+                <a href="#">FAQ</a>
+                <a href="#">Central de Ajuda</a>
+                <a href="./contato.html">Contato</a>
+            </div>
+            <div class="rmenu">
+                <h3>Legal</h3>
+                <a href="#">Termos de Uso</a>
+                <a href="#">Privacidade</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="fbtn">
+        <p>&copy; 2026 UvaFlix - Todos os direitos reservados.</p>
+        <div class="icons">
+            <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                <span>Instagram</span>
+            </a>
+            <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+                <span>Twitter</span>
+            </a>
+        </div>
+    </div>
+</footer>
 </body>
 </html>
