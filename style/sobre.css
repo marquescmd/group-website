@@ -1,21 +1,6 @@
 @import url("theme.css");
 @import url("header.css");
 
-/*body {
-  min-height: 100dvh;
-  background-color: var(--color-bg-deep);
-  color: var(--color-text);
-  font-family: "Inter", system-ui, sans-serif;
-}
-
-a {
-  color: var(--color-cta);
-}
-
-a:hover {
-  color: var(--color-cta-hover);
-}
-*/
 *{
       margin: 0;
       padding: 0;
@@ -24,12 +9,13 @@ a:hover {
     }
 
     body {
+      font-family: "Inter", system-ui, sans-serif;
+      min-height: 100dvh;
       background: #1a1a1f url("../images/fundouva.png") no-repeat center/cover;
       color: #fff;
-      padding: 24px;
     }
 
-    .container {
+    .boxmae {
       max-width: 1400px;
       margin: 0 auto;
       background: linear-gradient(180deg, #050608 0%, #090b10 100%);
@@ -41,6 +27,11 @@ a:hover {
     }
 
 /*Navbar*/
+a {
+  text-decoration: none ;
+  color: #fff;
+}
+
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -56,8 +47,8 @@ a:hover {
   letter-spacing: -1px;
   }
 
-.logo span {
-  color: #f28c28;
+ .logo span {
+   color: #f28c28;
   }
 
 .menu {
@@ -68,21 +59,14 @@ a:hover {
   color: #d8d8d8;
   }
 
-.menu .active {
-  color: #f28c28;
-  position: relative;
-  font-weight: 700;
+  .menu a {
+    color: #fff;
+    font-style: uppercase;
+    transition: 0.3s;
   }
 
-.menu .active::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -10px;
-  width: 100%;
-  height: 2px;
-  background: #f28c28;
-  border-radius: 999px;
+  .menu a:hover {
+    color: #f28c28;
   }
 
 .cta-button {
@@ -93,10 +77,17 @@ a:hover {
   border-radius: 999px;
   font-weight: 700;
   cursor: pointer;
+  transition: 0.3s;
+}
+
+  .cta-button:hover {
+    background-color: #f28c28;
+    color: #000;
+
   }
 
 /*Section*/
-.hero {
+.s1 {
   display: grid;
   grid-template-columns: 1.05fr 1fr;
   gap: 36px;
@@ -111,25 +102,25 @@ a:hover {
   margin-bottom: 20px;
   }
 
-.hero h1 {
+.s1 h1 {
   font-size: 4.2rem;
   line-height: 1.05;
   margin-bottom: 24px;
   max-width: 700px;
   }
 
-.hero h1 .highlight {
+.s1 h1 .highlight {
   color: #f28c28;
   }
 
-.hero p {
+.s1 p {
   color: #cfcfcf;
   font-size: 1.35rem;
   line-height: 1.7;
   max-width: 760px;
   }
 
-.hero-image {
+.s1 .hero-image {
   min-height: 430px;
   border-radius: 24px;
   position: relative;
@@ -288,7 +279,6 @@ a:hover {
   padding: 60px 8% 20px;
   border-top: 1px solid #222;
   font-family: 'Inter', sans-serif;
-  
 }
 
 .boxf {
@@ -296,7 +286,6 @@ a:hover {
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 40px;
-  
 }
 
 .flogo h2 {

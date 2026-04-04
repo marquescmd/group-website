@@ -38,13 +38,8 @@ body {
 
 .logo-link { 
   font-family:Verdana, Geneva, Tahoma, sans-serif;
-  text-decoration: none;
-  color: #fff;
-}
-
-.logo-link h1:hover {
   text-decoration: none !important;
-  color:#fff
+  color: #fff;
 }
 
 .logo-link h1 {
@@ -99,7 +94,7 @@ body {
   font-size: 1.2rem;
   max-width: 700px;
   margin-bottom: 1rem;
-  line-height: 1.6;
+  /*line-height: 1.6;*/
 }
 
 .price {

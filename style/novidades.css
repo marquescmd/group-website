@@ -24,7 +24,7 @@ body {
 .site-nav .logo-link h1 {
   font-size: clamp(1.1rem, 3vw, 1.5rem);
   font-weight: 400;
-  line-height: 1.2;
+  line-height: 1.2; 
 }
 
 .site-nav .logo-link h1 strong {
