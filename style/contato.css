@@ -15,3 +15,123 @@ a {
 a:hover {
   color: var(--color-cta-hover);
 }
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 80px); /* Adjust for header height */
+  padding: 20px;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--color-card);
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  max-width: 500px;
+  width: 100%;
+}
+
+.logo-form {
+  margin-bottom: 20px;
+}
+
+.form-container h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.form-container h1 .t_ctt {
+  color: var(--color-cta);
+}
+
+form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-bottom: 5px;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+input {
+  padding: 12px;
+  margin-bottom: 20px;
+  border: 1px solid var(--color-border);
+  border-radius: 5px;
+  background-color: var(--color-bg-deep);
+  color: var(--color-text);
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--color-cta);
+}
+
+textarea {
+  padding: 12px;
+  margin-bottom: 20px;
+  border: 1px solid var(--color-border);
+  border-radius: 5px;
+  background-color: var(--color-bg-deep);
+  color: var(--color-text);
+  font-size: 1rem;
+  font-family: inherit;
+  resize: vertical;
+  min-height: 100px;
+  transition: border-color 0.3s;
+}
+
+textarea:focus {
+  outline: none;
+  border-color: var(--color-cta);
+}
+
+button {
+  padding: 12px;
+  background-color: var(--color-cta);
+  color: var(--color-text);
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: var(--color-cta-hover);
+}
+
+/* Logo em texto — alinhado ao index */
+.site-nav .logo-link {
+  text-decoration: none;
+  color: var(--color-text);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.site-nav .logo-link h1 {
+  font-size: clamp(1.1rem, 3vw, 1.5rem);
+  font-weight: 400;
+  line-height: 1.2; 
+}
+
+.site-nav .logo-link h1 strong {
+  color: var(--color-cta);
+}
+
+.nav-links a[aria-current="page"] {
+  color: var(--color-cta);
+  pointer-events: none;
+}
